@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
@@ -9,7 +10,14 @@ namespace backend.Controllers
     [HttpGet]
     public IActionResult get()
     {
-      return Ok();
+      try
+      {
+        throw new Exception("Deu erro");
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
     }
 
   }
