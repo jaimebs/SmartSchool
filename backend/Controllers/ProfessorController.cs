@@ -30,12 +30,12 @@ namespace backend.Controllers
       }
     }
 
-    [HttpGet("{alunoId}")]
-    public async Task<IActionResult> GetById(int alunoId)
+    [HttpGet("{professorId}")]
+    public async Task<IActionResult> GetById(int professorId)
     {
       try
       {
-        var result = await _repo.GetProfessorAsyncById(alunoId, false);
+        var result = await _repo.GetProfessorAsyncById(professorId, false);
         return Ok(result);
       }
       catch (Exception ex)
