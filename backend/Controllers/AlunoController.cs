@@ -26,7 +26,7 @@ namespace backend.Controllers
       }
       catch (Exception ex)
       {
-        return BadRequest($"Error: {ex.Message}");
+        return BadRequest(new { error = ex.Message });
       }
     }
 
@@ -40,7 +40,7 @@ namespace backend.Controllers
       }
       catch (Exception ex)
       {
-        return BadRequest($"Error: {ex.Message}");
+        return BadRequest(new { error = ex.Message });
       }
     }
 
@@ -54,7 +54,7 @@ namespace backend.Controllers
       }
       catch (Exception ex)
       {
-        return BadRequest($"Error: {ex.Message}");
+        return BadRequest(new { error = ex.Message });
       }
     }
 
@@ -72,10 +72,10 @@ namespace backend.Controllers
       }
       catch (Exception ex)
       {
-        return BadRequest($"Error: {ex.Message}");
+        return BadRequest(new { error = ex.Message });
       }
 
-      return BadRequest("Erro não esperado.");
+      return BadRequest(new { error = "Erro não esperado." });
     }
 
     [HttpPut("{alunoId}")]
@@ -84,7 +84,7 @@ namespace backend.Controllers
       try
       {
         var aluno = await _repo.GetAlunoAsyncById(alunoId, false);
-        if (aluno == null) return NotFound("Aluno não encontrado!");
+        if (aluno == null) return NotFound(new { mensagem = "Aluno não encontrado!" });
 
         _repo.Update(model);
 
@@ -95,10 +95,10 @@ namespace backend.Controllers
       }
       catch (Exception ex)
       {
-        return BadRequest($"Error: {ex.Message}");
+        return BadRequest(new { error = ex.Message });
       }
 
-      return BadRequest("Erro não esperado.");
+      return BadRequest(new { error = "Erro não esperado." });
     }
 
     [HttpDelete("{alunoId}")]
@@ -107,21 +107,21 @@ namespace backend.Controllers
       try
       {
         var aluno = await _repo.GetAlunoAsyncById(alunoId, false);
-        if (aluno == null) return NotFound("Aluno não encontrado!");
+        if (aluno == null) return NotFound(new { mensagem = "Aluno não encontrado!" });
 
         _repo.Delete(aluno);
 
         if (await _repo.SaveChangesAsync())
         {
-          return Ok("Deletado");
+          return Ok(new { mensagem = "Deletado" });
         }
       }
       catch (Exception ex)
       {
-        return BadRequest($"Error: {ex.Message}");
+        return BadRequest(new { error = ex.Message });
       }
 
-      return BadRequest("Erro não esperado.");
+      return BadRequest(new { error = "Erro não esperado." });
     }
 
   }
