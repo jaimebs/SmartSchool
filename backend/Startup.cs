@@ -23,7 +23,9 @@ namespace backend
       services.AddDbContext<DataContext>(
         x => x.UseSqlite(Configuration.GetConnectionString("DefaultConn"))
       );
-      services.AddControllers();
+      services.AddControllers()
+              .AddNewtonsoftJson(option => option.SerializerSettings.ReferenceLoopHandling
+               = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
       services.AddScoped<IRepository, Repository>();
     }
 

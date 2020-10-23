@@ -34,9 +34,15 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 ```
 
-Para configurar as migrations foram feitos os seguintes procedimentos:
+```sh
+dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson
+```
+
+**Obs:** Depois de instalados os pacotes, as configurações devem ser feitas conforme o arquivo **Startup.cs**
 
 ## Instalar Ferramentas Locais
+
+Para configurar as migrations foram feitos os seguintes procedimentos:
 
 Para instalar ferramentas locais.
 Primeiro rode o comendo **dotnet new tool-manifest**, em seguida rode o comando para instalar a ferramenta que deseja, Ex: **dotnet tool install dotnet-ef**.
